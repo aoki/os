@@ -1,0 +1,8 @@
+ACTIVE_PLATFORM       = RingoLoaderPkg/RingoLoaderPkg.dsc
+TARGET                = DEBUG
+TARGET_ARCH           = X64
+TOOL_CHAIN_CONF       = Conf/tools_def.txt
+#TOOL_CHAIN_TAG        = CLANG38
+TOOL_CHAIN_TAG        = CLANGPDB
+BUILD_RULE_CONF       = Conf/build_rule.txt
+3                     = 0x3
