@@ -1,5 +1,6 @@
 #include <Library/UefiBootServicesTableLib.h>
 #include <Library/UefiLib.h>
+#include <Protocol/LoadedImage.h>
 #include <Uefi.h>
 
 struct MemoryMap {
@@ -49,6 +50,21 @@ EFI_STATUS GetMemoryMap(struct MemoryMap *map) {
         &map->descriptor_size,
         // DescriptorVersion OUT メモリディスクリプタの構造体のバージョン番号
         &map->descriptor_version);
+}
+
+EFI_STATUS OpenRootDir(EFI_HANDLE image_handle, EFI_FILE_PROTOCOL **root) {
+    EFI_LOADED_IMAGE_PROTOCOL *loaded_image;
+    EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *fs;
+
+    gBS->OpenProtocol(image_handle, &gEfiLoadedImageProtocolGuid,
+                      (VOID **)&loaded_image, image_handle, NULL,
+                      EFI_OPEN_PROTOCOL_BY_HANDLE_PROTOCOL);
+    gBS->OpenProtocol(loaded_image->DeviceHandle,
+                      &gEfiSimpleFileSystemProtocolGuid, (VOID **)&fs,
+                      image_handle, NULL, EFI_OPEN_PROTOCOL_BY_HANDLE_PROTOCOL);
+    fs->OpenVolume(fs, root);
+
+    return EFI_SUCCESS;
 }
 
 EFI_STATUS EFIAPI UefiMain(EFI_HANDLE image_handle,
