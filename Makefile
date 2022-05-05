@@ -17,7 +17,7 @@ build:
 	@printf '\n$(bold)# Make base BaseTools$(reset)\n'
 	@cd $(EDK2); \
 		# make -C ${EDK2}/BaseTools/Source/C clean;\
-		make -C ${EDK2}/BaseTools/Source/C
+		# make -C ${EDK2}/BaseTools/Source/C
 
 	@printf '\n$(bold)# Copy target.txt and build$(reset)\n'
 	@cd $(EDK2); \
