@@ -1,6 +1,6 @@
 #@range_begin(defines)
 [Defines]
-  PLATFORM_NAME                  = NoFutureLoaderPkg
+  PLATFORM_NAME                  = RingoLoaderPkg
   PLATFORM_GUID                  = d3f11f4e-71e9-11e8-a7e1-33fd4f7d5a3e
   PLATFORM_VERSION               = 0.1
   DSC_SPECIFICATION              = 0x00010005
