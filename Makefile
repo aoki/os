@@ -70,7 +70,8 @@ run:
 	qemu-system-x86_64 \
 		-drive if=pflash,format=raw,file=OVMF_CODE.fd \
 		-drive if=pflash,format=raw,file=OVMF_VARS.fd \
-		-drive file=disk.img,format=raw,index=0,media=disk
+		-drive file=disk.img,format=raw,index=0,media=disk \
+		-monitor stdio
 .PHONY: run
 
 mount:
